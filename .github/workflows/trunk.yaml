@@ -14,7 +14,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4 # Ensure you check out your code
-      - name: Setup trunk
+        with:
+          ref: main
+      - name: Install Trunk
         run: curl https://get.trunk.io -fsSL | bash
       - name: Initialize trunk
         run: trunk init
