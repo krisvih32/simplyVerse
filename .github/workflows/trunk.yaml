@@ -1,0 +1,22 @@
+name: trunk
+
+permissions: read-all
+on: [push]
+
+jobs:
+  trunk:
+    concurrency:
+      group: trunk # You can specify a group name for concurrency control
+      cancel-in-progress: true # This will cancel any in-progress runs in the same group
+
+    runs-on: ubuntu-latest # Specify the OS for the job
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Ensure you check out your code
+      - name: Setup trunk
+        run: curl https://get.trunk.io -fsSL | bash
+      - name: Upgrade Trunk
+        run: trunk upgrade
+      - name: Check Trunk
+        run: trunk check
