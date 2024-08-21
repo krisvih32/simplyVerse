@@ -1,0 +1,18 @@
+name: test
+permissions: read-all
+on: [push]
+jobs:
+  test:
+    concurrency:
+      group: test # You can specify a group name for concurrency control
+      cancel-in-progress: true # This will cancel any in-progress runs in the same group
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.21
+      - name: Run tests
+        run: go test ./...
