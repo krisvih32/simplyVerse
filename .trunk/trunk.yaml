@@ -34,4 +34,4 @@ actions:
   definitions:
     - id: trunk-upgrade-pre-push
       description: Upgrade Trunk before push if an update is available
-      run: trunk upgrade --no-progress
+      run: trunk upgrade
