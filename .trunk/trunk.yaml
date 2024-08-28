@@ -30,3 +30,8 @@ actions:
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
     - trunk-upgrade-available
+    - trunk-upgrade-pre-push
+  definitions:
+    - id: trunk-upgrade-pre-push
+      description: Upgrade Trunk before push if an update is available
+      run: trunk upgrade --no-progress
