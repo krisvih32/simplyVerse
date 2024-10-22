@@ -21,6 +21,10 @@ runtimes:
 # This is the section where you manage your linters:
 # (https://docs.trunk.io/check/configuration)
 lint:
+  ignore:
+    - linters: [ALL]
+      paths:
+        - "simplyVerse"
   enabled:
     - gofmt@1.20.4
     - golangci-lint@1.61.0

@@ -1,4 +1,6 @@
+---
 version: "0.2"
 # Suggestions can sometimes take longer on CI machines,
 # leading to inconsistent results.
+# trunk-ignore(yamllint/comments)
 suggestionsTimeout: 5000 # ms
