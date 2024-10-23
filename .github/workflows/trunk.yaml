@@ -2,7 +2,7 @@
 name: trunk
 
 permissions: read-all
-"on": [push, pull-request]
+"on": [pull-request]
 
 jobs:
   trunk:
