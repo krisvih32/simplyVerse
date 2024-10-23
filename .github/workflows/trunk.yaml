@@ -1,8 +1,13 @@
 ---
 name: trunk
-
+"on":
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 permissions: read-all
-"on": [pull_request]
 
 jobs:
   trunk:
@@ -32,4 +37,8 @@ jobs:
       - name: Upgrade Trunk
         run: trunk upgrade
       - name: Check Trunk
+        run: trunk check
+      - name: Second Upgrade
+        run: trunk upgrade
+      - name: Second Check
         run: trunk check
