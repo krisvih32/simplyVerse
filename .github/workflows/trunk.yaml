@@ -22,6 +22,10 @@ jobs:
           ref: main
       - name: Install Trunk
         run: curl https://get.trunk.io -fsSL | bash
+      - name: temp
+        run: echo "abc "
+      - name: temp 2
+        run: cat .trunk/trunk.yaml
       - name: Initialize trunk
         run: '[ ! -d ".trunk" ] && trunk init ||
           echo "Trunk is already initialized"'
