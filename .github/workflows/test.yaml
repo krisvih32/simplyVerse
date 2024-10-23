@@ -1,11 +1,15 @@
+---
 name: test
 permissions: read-all
-on: [push]
+"on": [push]
 jobs:
   test:
     concurrency:
+      # yamllint disable-line
       group: test # You can specify a group name for concurrency control
-      cancel-in-progress: true # This will cancel any in-progress runs in the same group
+      # yamllint disable-line
+      cancel-in-progress: true # This will cancel any in-progress runs in the
+      # same group
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
