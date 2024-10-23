@@ -23,7 +23,7 @@ jobs:
       - name: Install Trunk
         run: curl https://get.trunk.io -fsSL | bash
       - name: Initialize trunk
-        run: '[ ! -d ".trunk" ] && trunk init ||\
+        run: '[ ! -d ".trunk" ] && trunk init ||
           echo "Trunk is already initialized"'
       - name: Upgrade Trunk
         run: trunk upgrade
