@@ -17,8 +17,6 @@ name: CodeQL
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: 41 22 * * 3
 
 jobs:
   analyze:
@@ -30,10 +28,8 @@ jobs:
     # Consider using larger runners or machines with greater resources for
     # possible analysis time improvements.
     # yamllint disable-lint
-    runs-on:
-      # yamllint disable-line
-      ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       security-events: write
 
