@@ -1,0 +1,37 @@
+---
+name: trunk
+"on":
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+permissions: read-all
+
+jobs:
+  trunk:
+    concurrency:
+      # yamllint disable-line
+      group: trunk # You can specify a group name for concurrency control
+      # yamllint disable-line
+      cancel-in-progress: true # This will cancel any in-progress runs in the same group
+      # yamllint disable-line
+    runs-on: ubuntu-latest # Specify the OS for the job
+
+    steps:
+      - name: Checkout code
+        # yamllint disable-line
+        uses: actions/checkout@v4 # Ensure you check out your code
+        with:
+          ref: main
+      - name: Install Trunk
+        run: curl https://get.trunk.io -fsSL | bash
+      - name: Upgrade Trunk
+        run: trunk upgrade
+      - name: Check Trunk
+        run: trunk check
+      - name: Second Upgrade
+        run: trunk upgrade
+      - name: Second Check
+        run: trunk check
