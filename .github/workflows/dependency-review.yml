@@ -34,7 +34,6 @@ permissions:
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,6 +43,6 @@ jobs:
         # Commonly enabled options, see: https://github.com/actions/dependency-review-action#configuration-options for all available options.
         with:
           comment-summary-in-pr: always
-          fail-on-severity: low
+          #   fail-on-severity: moderate
           #   deny-licenses: GPL-1.0-or-later, LGPL-2.0-or-later
           #   retry-on-snapshot-warnings: true
