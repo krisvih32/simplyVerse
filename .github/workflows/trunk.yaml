@@ -21,17 +21,24 @@ jobs:
 
     steps:
       - name: Checkout code
+        continue-on-error: false
         # yamllint disable-line
-        uses: actions/checkout@v4 # Ensure you check out your code
+        uses: actions/checkout@v4.2.2
         with:
           ref: main
       - name: Install Trunk
+        continue-on-error: false
         run: curl https://get.trunk.io -fsSL | bash
       - name: Upgrade Trunk
+        continue-on-error: false
         run: trunk upgrade
       - name: Check Trunk
+        continue-on-error: false
         run: trunk check
+      # From a glitch in the matrix (trunk) Seconds are needed
       - name: Second Upgrade
+        continue-on-error: false
         run: trunk upgrade
       - name: Second Check
+        continue-on-error: false
         run: trunk check

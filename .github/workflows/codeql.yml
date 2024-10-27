@@ -29,7 +29,7 @@ jobs:
     # possible analysis time improvements.
     # yamllint disable-lint
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     permissions:
       security-events: write
 
@@ -63,10 +63,12 @@ jobs:
             # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
       - name: Checkout repository
+        continue-on-error: false
         uses: actions/checkout@v4
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
+        continue-on-error: false
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
@@ -102,6 +104,7 @@ jobs:
           exit 1
 
       - name: Perform CodeQL Analysis
+        continue-on-error: false
         uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{matrix.language}}"
