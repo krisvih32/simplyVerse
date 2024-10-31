@@ -125,7 +125,7 @@ To uninstall the project:
    Then:
 
    ```bash
-   go clean -i github.com/krisvih32/simplyVerse
+   rm $(go env GOPATH)/bin/simplyVerse
    ```
 
 2. If installed with
